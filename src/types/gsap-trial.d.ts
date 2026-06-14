@@ -1,5 +1,4 @@
-declare module "gsap-trial/SplitText" {
-  import { gsap } from "gsap";
+declare module "gsap/SplitText" {
   export class SplitText {
     constructor(
       targets:
@@ -19,7 +18,7 @@ declare module "gsap-trial/SplitText" {
   }
 }
 
-declare module "gsap-trial/ScrollSmoother" {
+declare module "gsap/ScrollSmoother" {
   export class ScrollSmoother {
     constructor(vars?: any);
     static create(vars?: any): ScrollSmoother;
