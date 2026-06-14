@@ -84,22 +84,20 @@
 }
 .character-rim {
   position: absolute;
-  width: 400px;
-  height: 400px;
+  width: 500px;
+  height: 500px;
   z-index: 1;
-  background-color: #f59bf8;
-  transform: translate(-50%, 36%) scaleX(1.4);
-  box-shadow: inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
-  filter: blur(50px);
+  background-image: radial-gradient(circle at center, #ff8dff 0%, #8b5cf6 25%, rgba(79, 70, 229, 0.6) 55%, transparent 90%);
+  box-shadow: 0 0 120px rgba(203, 46, 224, 0.45), inset 66px 35px 85px 0px rgba(85, 0, 255, 0.65);
+  filter: blur(40px);
   border-radius: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 100%) scale(1.4);
+  transform: translate(-50%, 120%) scale(1.35);
   opacity: 0;
 }
 .character-model {
-  height: 80%;
-  height: 80vh;
+  height: 85vh;
   position: absolute;
   max-width: 1920px;
   max-height: 1080px;
@@ -107,18 +105,14 @@
   width: 100%;
   left: 50%;
   z-index: 0;
-  bottom: 50px;
+  bottom: 20px;
   pointer-events: inherit;
 }
 .character-model::after {
   content: "";
   width: 100vw;
-  height: 250px;
-  background-image: linear-gradient(
-    to bottom,
-    transparent,
-    var(--backgroundColor) 70%
-  );
+  height: 260px;
+  background-image: radial-gradient(circle at center, rgba(255, 134, 255, 0.15), transparent 55%), linear-gradient(to bottom, transparent, var(--backgroundColor) 80%);
   bottom: -50px;
   left: 50%;
   transform: translateX(-50%);
@@ -127,9 +121,9 @@
 }
 .character-model::before {
   content: "";
-  width: 100vw;
-  height: 700px;
-  background-color: var(--backgroundColor);
+  width: 110vw;
+  height: 720px;
+  background-image: radial-gradient(circle at 20% 10%, rgba(164, 94, 255, 0.22), transparent 28%), radial-gradient(circle at 80% 20%, rgba(79, 210, 255, 0.16), transparent 32%);
   top: 100%;
   left: 50%;
   transform: translateX(-50%);

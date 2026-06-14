@@ -3,9 +3,9 @@ import { RGBELoader } from "three-stdlib";
 import { gsap } from "gsap";
 
 const setLighting = (scene: THREE.Scene) => {
-  const directionalLight = new THREE.DirectionalLight(0xc7a9ff, 0);
+  const directionalLight = new THREE.DirectionalLight(0xffe0b4, 0);
   directionalLight.intensity = 0;
-  directionalLight.position.set(-0.47, -0.32, -1);
+  directionalLight.position.set(-2, 3, 5);
   directionalLight.castShadow = true;
   directionalLight.shadow.mapSize.width = 1024;
   directionalLight.shadow.mapSize.height = 1024;
@@ -13,10 +13,18 @@ const setLighting = (scene: THREE.Scene) => {
   directionalLight.shadow.camera.far = 50;
   scene.add(directionalLight);
 
-  const pointLight = new THREE.PointLight(0xc2a4ff, 0, 100, 3);
-  pointLight.position.set(3, 12, 4);
-  pointLight.castShadow = true;
-  scene.add(pointLight);
+  const rimLight = new THREE.PointLight(0xae3cff, 0, 40, 2);
+  rimLight.position.set(2.5, 6, -5);
+  rimLight.castShadow = false;
+  scene.add(rimLight);
+
+  const fillLight = new THREE.PointLight(0x88b8ff, 0, 35, 2);
+  fillLight.position.set(-4, 6, 4);
+  fillLight.castShadow = false;
+  scene.add(fillLight);
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.14);
+  scene.add(ambientLight);
 
   new RGBELoader()
     .setPath("/models/")
@@ -27,23 +35,36 @@ const setLighting = (scene: THREE.Scene) => {
       scene.environmentRotation.set(5.76, 85.85, 1);
     });
 
+
   function setPointLight(screenLight: any) {
     if (screenLight.material.opacity > 0.9) {
-      pointLight.intensity = screenLight.material.emissiveIntensity * 20;
+      rimLight.intensity = screenLight.material.emissiveIntensity * 14;
+      fillLight.intensity = screenLight.material.emissiveIntensity * 10;
     } else {
-      pointLight.intensity = 0;
+      rimLight.intensity = 0.35;
+      fillLight.intensity = 0.25;
     }
   }
   const duration = 2;
   const ease = "power2.inOut";
   function turnOnLights() {
     gsap.to(scene, {
-      environmentIntensity: 0.64,
+      environmentIntensity: 0.86,
       duration: duration,
       ease: ease,
     });
     gsap.to(directionalLight, {
-      intensity: 1,
+      intensity: 0.95,
+      duration: duration,
+      ease: ease,
+    });
+    gsap.to(fillLight, {
+      intensity: 0.65,
+      duration: duration,
+      ease: ease,
+    });
+    gsap.to(rimLight, {
+      intensity: 0.78,
       duration: duration,
       ease: ease,
     });
