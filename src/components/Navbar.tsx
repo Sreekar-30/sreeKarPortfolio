@@ -31,7 +31,9 @@ const Navbar = () => {
           e.preventDefault();
           let elem = e.currentTarget as HTMLAnchorElement;
           let section = elem.getAttribute("data-href");
-          smoother.scrollTo(section, true, "top top");
+          if (section) {
+            smoother.scrollTo(section, true, "top top");
+          }
         }
       });
     });
