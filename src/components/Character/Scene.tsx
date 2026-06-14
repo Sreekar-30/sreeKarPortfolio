@@ -35,6 +35,11 @@ const Scene = () => {
       renderer.setPixelRatio(window.devicePixelRatio);
       renderer.toneMapping = THREE.ACESFilmicToneMapping;
       renderer.toneMappingExposure = 1;
+      if ("outputColorSpace" in renderer) {
+        (renderer as any).outputColorSpace = THREE.SRGBColorSpace;
+      } else {
+        renderer.outputEncoding = THREE.sRGBEncoding;
+      }
       canvasDiv.current.appendChild(renderer.domElement);
 
       const camera = new THREE.PerspectiveCamera(14.5, aspect, 0.1, 1000);
